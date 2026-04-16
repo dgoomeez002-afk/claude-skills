@@ -67,6 +67,33 @@ install_skill "office-skills" "https://github.com/tfriedel/claude-office-skills"
 
 echo ""
 echo "============================================================"
+echo "  APLICANDO SKILL.md PERSONALIZADOS..."
+echo "============================================================"
+
+# Base URL de nuestro repo con los SKILL.md mejorados
+SUITE_RAW="https://raw.githubusercontent.com/dgoomeez002-afk/claude-skills/main/skills"
+
+apply_custom_skill() {
+  local name=$1
+  local dest="$SKILLS_DIR/$name/SKILL.md"
+  local url="$SUITE_RAW/$name/SKILL.md"
+  if command -v curl &> /dev/null; then
+    curl -sL "$url" -o "$dest" 2>/dev/null && echo "  ✓ SKILL.md actualizado: $name" || echo "  ⚠ Sin custom SKILL.md: $name"
+  fi
+}
+
+# Sobreescribir con nuestros SKILL.md mejorados
+apply_custom_skill "marketing-skills"   # 60+ comandos (marketing + SEO integrados)
+apply_custom_skill "developer-skills"   # 15+ comandos (code review + security)
+apply_custom_skill "command-center"     # Memoria + Centro de comandos
+apply_custom_skill "business-skills"
+apply_custom_skill "technical-commercial"
+apply_custom_skill "legal-writer"
+apply_custom_skill "translator"
+apply_custom_skill "office-skills"
+
+echo ""
+echo "============================================================"
 echo "  INSTALACIÓN COMPLETADA ✅"
 echo "============================================================"
 echo ""
