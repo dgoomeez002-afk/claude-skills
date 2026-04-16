@@ -1,0 +1,14 @@
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.log
+
+# Personal data (never commit)
+*.env
+.env.*
+secrets/
+personal/
